@@ -1,4 +1,8 @@
-export CGO_ENABLED='1'
-
 test:
 	@go test -v
+
+race:
+	@go test -race
+
+# bench:
+# 	@go test -bench . -benchmem
