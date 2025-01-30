@@ -23,6 +23,14 @@ type LRUCacheImpl struct {
 	mu       sync.Mutex
 }
 
+func NewLRUCache(n int) LRUCache {
+	return &LRUCacheImpl{
+		capacity: n,
+		cache:    make(map[string]*list.Element),
+		list:     list.New(),
+	}
+}
+
 func (l *LRUCacheImpl) Add(key, value string) bool {
 	l.mu.Lock()
 	defer l.mu.Unlock()
